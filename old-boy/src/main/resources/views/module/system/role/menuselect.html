@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+	<TITLE>权限配置</TITLE>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="../../../../static/layui/css/layui.css" media="all" />
+	<link href="../../../../static/css/zTree/metroStyle/metroStyle.css" type="text/css" media="screen" rel="stylesheet"/>
+	<link href="../../../../static/css/zTree/demo.css" type="text/css" media="screen" rel="stylesheet"/>
+	<link rel="stylesheet" href="../../../../static/css/public.css" media="all" />
+	<script type="text/javascript" src="../../../../static/js/ztree/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="../../../../static/js/ztree/jquery.ztree.core.min.js"></script>
+	<script type="text/javascript" src="../../../../static/js/ztree/jquery.ztree.excheck.js"></script>
+	<script type="text/javascript" src="../../../../static/js/ztree/jquery.ztree.exedit.js"></script>
+	<script type="text/javascript">							
+			var setting = {
+					view: {
+							selectedMulti: false
+					},
+					check: {
+							enable: true
+					},
+					data: {
+							simpleData: {
+									enable: true
+							}
+					}
+			};
+
+			$(document).ready(function(){
+				$.ajax({
+						url: "../../../../static/json/menuList.json",                  //ajax请求地址
+						success: function (data) {	
+							$.fn.zTree.init($("#treeDemo"), setting, data.data);  //加载数据
+						}
+				 });			
+			});
+
+			//转换数据
+// 		 function covert(data){
+// 			 var nodes =[];
+// 			 for(var i =0;i<data.length;i++){
+// 				 nodes.push({id: data[i].id, pId: data[i].parentId,name :data[i].name}); 
+// 			 }
+// 			 console.log(nodes);
+// 			 return nodes;
+// 		 }
+	</script>
+</HEAD>
+
+<BODY class="childrenBody">
+	<form class="layui-form">
+			<div class="">
+					<ul id="treeDemo" class="ztree"></ul>
+			</div>
+	</form>
+</BODY>
+</HTML>

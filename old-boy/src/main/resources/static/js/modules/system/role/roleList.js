@@ -23,7 +23,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             {field: 'roleCode', title: '角色编码', align:'center'},
             {field: 'updateDate', title: '更新时间',  align:'center'},
             {field: 'status', title: '状态', align:'center'},
-            {title: '操作', width:170, templet:'#roleListBar',fixed:"right",align:"center"}
+            {title: '操作', width:250, templet:'#roleListBar',fixed:"right",align:"center"}
         ]]
     });
 
@@ -53,8 +53,12 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
+                   body.find(".roleName").val(edit.roleName);
+                   body.find(".userType").val(edit.abstract);
+									 body.find(".status select").val(edit.status);
+									 body.find(".roleCode").val(edit.roleCode);
+                   body.find(".remarks").val(edit.remarks);
 
-                	
                 	//可参考如下
 //                    body.find(".newsName").val(edit.newsName);
 //                    body.find(".abstract").val(edit.abstract);
@@ -100,8 +104,18 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                     layer.close(index);
                 // })
             });
-        } else if(layEvent === 'look'){ //预览
-            layer.alert("此功能需要前台展示，实际开发中传入对应的必要参数进行编码内容页面访问")
+        } else if(layEvent === 'permission'){ //配置权限			
+									layer.open({
+										type: 1,
+										title: false //不显示标题栏
+										,closeBtn: false
+										,area: '300px;'
+										,shade: 0.8
+										,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+										,btn: ['火速围观', '残忍拒绝']
+										,btnAlign: 'c'
+										,content: $("#menuselect")
+									});
         }
     });
 
