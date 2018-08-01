@@ -14,7 +14,7 @@ layui.use(['element', 'layer', 'form', 'tree','table','laytpl','laydate'], funct
 				mycars = res;				
 				layui.tree({
 					elem: '#orgTree' //指定元素
-					,target: '_blank' //是否新选项卡打开（比如节点返回href才有效）
+					,target: '_blank'
 					,click: function(item){ //点击节点回调
 						// layer.msg('当前节名称：'+ item.name + '<br>全部参数：'+ JSON.stringify(item.children));
 						//机构列表
