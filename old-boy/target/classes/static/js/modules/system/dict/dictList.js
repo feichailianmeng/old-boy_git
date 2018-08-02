@@ -73,6 +73,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                 },500)
             }
         })
+		console.log(index);
         layui.layer.full(index);
         //改变窗口大小时，重置弹窗的宽高，防止超出可视区域（如F12调出debug的操作）
         $(window).on("resize",function(){
