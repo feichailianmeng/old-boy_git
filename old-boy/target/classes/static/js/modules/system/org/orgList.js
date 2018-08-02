@@ -1,6 +1,7 @@
-layui.use(['element', 'layer', 'form', 'tree','table','laytpl','laydate'], function () {
+layui.use(['element', 'layer', 'form', 'tree','table','laydate'], function () {
 	  var layer = layui.layer
-	  ,$ = layui.jquery; 
+	  ,$ = layui.jquery,
+		form = layui.form,
 	  laydate = layui.laydate,
 	  laytpl = layui.laytpl,
 	  table = layui.table;
@@ -15,6 +16,7 @@ layui.use(['element', 'layer', 'form', 'tree','table','laytpl','laydate'], funct
 				layui.tree({
 					elem: '#orgTree' //指定元素
 					,target: '_blank'
+					,spread: true
 					,click: function(item){ //点击节点回调
 						// layer.msg('当前节名称：'+ item.name + '<br>全部参数：'+ JSON.stringify(item.children));
 						//机构列表
@@ -45,15 +47,11 @@ layui.use(['element', 'layer', 'form', 'tree','table','laytpl','laydate'], funct
 			});		  
 	  }
 	  initOrgTree();
-// 	  mycars = [{name: '校友',id: 1,alias: 'changyong',children: [{name: '校友管理',id: 11,href: 'http://www.layui.com/',alias: 'weidu'},{name: '校友会',id: 12}, {name: '校友卡管理' ,id: 13 }]}, {name: '信息',id: 2 ,spread: true ,children: []}, { name: '活动',id: 3 ,spread: true  
-// 	 		,children: [] },{ name: '消息',id: 4,spread: true,children: []},
-// 	 		{name: '统计',id: 5,spread: true,children: [] },{ name: '系统',id: 6 ,children: [{ name: '权限管理',id: 601 }, { name: '菜单管理'  ,id: 602}  ] }] ;
-	  // mycars = [{"name":"长安大学校友会","id":1,"alias":"changan","children":[{"name":"信息工程学院校友会","id":11,"children":[{"name":"计科系校友会","id":111},{"name":"网络工程系校友会","id":112},{"name":"软件工程系校友会","id":113}]},{"name":"建筑学院校友会","id":12,"children":[{"name":"建筑学系校友会","id":121},{"name":"城市规划系校友会","id":122}]},{"name":"汽车学院校友会","id":13,"children":[{"name":"交通运输系校友会","id":131},{"name":"车辆工程系校友会","id":132},{"name":"交通安全系校友会","id":133},{"name":"物流工程系校友会","id":114},{"name":"汽车服务工程系校友会","id":115}]}]}]
 
     //添加编码
-    function addDict(edit){
+    function addOrg(edit){
         var index = layui.layer.open({
-            title : "添加编码",
+            title : "添加机构",
             type : 2,
             content : "orgAdd.html",
             success : function(layero, index){
@@ -79,7 +77,7 @@ layui.use(['element', 'layer', 'form', 'tree','table','laytpl','laydate'], funct
 									}
 								}
                 setTimeout(function(){
-                    layui.layer.tips('点击此处返回编码列表', '.layui-layer-setwin .layui-layer-close', {
+                    layui.layer.tips('点击此处返回机构列表', '.layui-layer-setwin .layui-layer-close', {
                         tips: 3
                     });
                 },500)
@@ -91,9 +89,9 @@ layui.use(['element', 'layer', 'form', 'tree','table','laytpl','laydate'], funct
             layui.layer.full(index);
         })
     }
-    $(".addDict_btn").click(function(){
+    $(".addOrg_btn").click(function(){
 			if(flag !=''){
-				addDict();
+				addOrg();
 			}else{
 				layer.msg("请选中一个节点后增加机构");
 			}
@@ -105,9 +103,9 @@ layui.use(['element', 'layer', 'form', 'tree','table','laytpl','laydate'], funct
             data = obj.data;
 
         if(layEvent === 'edit'){ //编辑
-        	addDict(data);
+        	addOrg(data);
         } else if(layEvent === 'del'){ //删除
-            layer.confirm('确定删除此此编码？',{icon:3, title:'提示信息'},function(index){
+            layer.confirm('确定删除此此机构？',{icon:3, title:'提示信息'},function(index){
                 // $.get("删除文章接口",{
                 //     newsId : data.newsId  //将需要删除的newsId作为参数传入
                 // },function(data){

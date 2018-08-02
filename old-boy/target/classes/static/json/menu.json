@@ -109,7 +109,13 @@
 			"icon": "&#xe634;",
 			"href": "module/system/role/roleList.html",
 			"spread": false
+		},{
+			"title": "用户管理",
+			"icon": "&#xe634;",
+			"href": "module/system/user/userList.html",
+			"spread": false
 		}
+		
 	]
 }
 
