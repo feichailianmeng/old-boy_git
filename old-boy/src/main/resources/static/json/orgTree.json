@@ -2,11 +2,13 @@
 	"name": "长安大学校友会",
 	"id": 1,
 	"parentId": 0,
+	"spread": true,	
 	"alias": "changan",
 	"children": [{
 			"name": "信息工程学院校友会",
 			"id": 11,
 			"parentId": 1,
+			"spread": true,
 			"children": [{
 					"name": "计科系校友会",
 					"id": 111,
