@@ -93,8 +93,8 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             for (var i in data) {
                 newsId.push(data[i].newsId);
             }
-            layer.confirm('确定删除选中的文章？', {icon: 3, title: '提示信息'}, function (index) {
-                // $.get("删除文章接口",{
+            layer.confirm('确定删除选中的编码？', {icon: 3, title: '提示信息'}, function (index) {
+                // $.get("删除编码接口",{
                 //     newsId : newsId  //将需要删除的newsId作为参数传入
                 // },function(data){
                 tableIns.reload();
@@ -102,7 +102,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                 // })
             })
         }else{
-            layer.msg("请选择需要删除的文章");
+            layer.msg("请选择需要删除的编码");
         }
     })
 
@@ -115,7 +115,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
         	addDict(data);
         } else if(layEvent === 'del'){ //删除
             layer.confirm('确定删除此此编码？',{icon:3, title:'提示信息'},function(index){
-                // $.get("删除文章接口",{
+                // $.get("删除编码接口",{
                 //     newsId : data.newsId  //将需要删除的newsId作为参数传入
                 // },function(data){
                     tableIns.reload();
