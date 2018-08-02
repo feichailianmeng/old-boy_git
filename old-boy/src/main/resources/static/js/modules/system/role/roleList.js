@@ -105,17 +105,24 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                 // })
             });
         } else if(layEvent === 'permission'){ //配置权限			
-									layer.open({
-										type: 1,
-										title: false //不显示标题栏
-										,closeBtn: false
-										,area: '300px;'
-										,shade: 0.8
-										,id: 'LAY_layuipro' //设定一个id，防止重复弹出
-										,btn: ['火速围观', '残忍拒绝']
-										,btnAlign: 'c'
-										,content: $("#menuselect")
-									});
+								var index = layui.layer.open({
+										type: 2,
+										title: '菜单选择',
+										shadeClose: true,
+										shade: 0.8,
+										area: ['280px', '65%'],
+										// content: '../views/module/system/role/menuselect.html',
+										content: 'menuselect.html',
+										success : function(layero, index){
+											//
+											setTimeout(function(){
+													layui.layer.tips('点击此处返回角色列表', '.layui-layer-setwin .layui-layer-close', {
+															tips: 3
+													});
+											},500)											
+										}
+
+									});		
         }
     });
 
