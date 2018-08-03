@@ -20,7 +20,7 @@
 </head>
 
 <body class="childrenBody">
-<form class="layui-form">
+<div class="layui-fluid">
 	<blockquote class="layui-elem-quote quoteBox">
 		<form class="layui-form">
 			<div class="layui-inline">
@@ -36,15 +36,13 @@
 		</form>
 	</blockquote>
 	<table id="roleList" lay-filter="roleList"></table>
-
-
 	<!--操作-->
 	<script type="text/html" id="roleListBar">
 		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
 		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="permission">角色权限</a>
 	</script>
-</form>
+</div>
 <!-- <div  style="width:500px;display:none;" id ="menuselect"> -->
 <div id="menuselect" class="layer_self_wrap" style="width:500px;display:none;">	
 </div>

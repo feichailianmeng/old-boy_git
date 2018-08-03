@@ -1,3 +1,6 @@
+/**
+ * 主页面缓存及其他功能js文件
+ */
 var cacheStr = window.sessionStorage.getItem("cache"),
     oneLoginStr = window.sessionStorage.getItem("oneLogin");
 layui.use(['form','jquery',"layer"],function() {

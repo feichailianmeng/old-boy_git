@@ -1,9 +1,12 @@
+
+/**
+ * 封装下拉框多选、搜索等等功能
+ */
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /**
- * name: formSelects
  * 基于Layui Select多选
  * version: 4.0.0.0713
  * http://sun.faysunshine.com/layui/formSelects-v4/dist/formSelects-v4.js
