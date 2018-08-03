@@ -1,6 +1,7 @@
 $(function(){ 
 layui.use(['table','form','element','layer','jquery'],function(){
 		var layer = layui.layer,
+				form = layui.form,
 				laydate = layui.laydate,
 				_$ = layui.jquery;
 				table = layui.table;
@@ -109,7 +110,7 @@ layui.use(['table','form','element','layer','jquery'],function(){
             data = obj.data;
 
         if(layEvent === 'edit'){ //编辑
-        	addOrg(data);
+        	addUser(data);
         } else if(layEvent === 'del'){ //删除
             layer.confirm('确定删除此用户？',{icon:3, title:'提示信息'},function(index){
                 // $.get("删除文章接口",{
@@ -126,7 +127,7 @@ layui.use(['table','form','element','layer','jquery'],function(){
 
 		
 		$("#addUser_btn").click(function(){
-					addUser();
+			addUser();
 		})	  
 		
 		//搜索【此功能需要后台配合，所以暂时没有动态效果演示】
@@ -149,7 +150,7 @@ layui.use(['table','form','element','layer','jquery'],function(){
     //添加用户
     function addUser(edit){
         var index = layui.layer.open({
-            title : "添加机构",
+            title : "添加用户",
             type : 2,
             content : "userAdd.html",
             success : function(layero, index){
@@ -157,7 +158,8 @@ layui.use(['table','form','element','layer','jquery'],function(){
                 if(edit){
 //                 	body.find(".parentId").val(edit.parentId);
 //                 	body.find(".name").val(edit.name);
-                	
+
+                   body.find(".userOrg").val(edit.orgId);
                 	//可参考如下
 //                    body.find(".newsName").val(edit.newsName);
 //                    body.find(".abstract").val(edit.abstract);

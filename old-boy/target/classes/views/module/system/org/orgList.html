@@ -10,32 +10,39 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
+	<link href="../../../../static/css/zTree/metroStyle/metroStyle.css" type="text/css" media="screen" rel="stylesheet"/>
+	<link href="../../../../static/css/zTree/demo.css" type="text/css" media="screen" rel="stylesheet"/>
 	<link rel="stylesheet" href="../../../../static/layui/css/layui.css" media="all" />
 	<link rel="stylesheet" href="../../../../static/css/public.css" media="all" />
+	<script type="text/javascript" src="../../../../static/js/ztree/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="../../../../static/js/ztree/jquery.ztree.core.min.js"></script>
+	<script type="text/javascript" src="../../../../static/js/ztree/jquery.ztree.excheck.js"></script>
+	<script type="text/javascript" src="../../../../static/js/ztree/jquery.ztree.exedit.js"></script>
 </head>
-<body class="layui-fluid">
+<body class="childrenBody">
 <div class="layui-fluid">
-  <div class="layui-row layui-col-space10">
-    <div class="layui-col-md3">
-			<fieldset class="layui-elem-field">
-					 <legend>机构管理</legend>
-					 <ul id="orgTree"></ul>				
-			</fieldset>
+	<div class="layui-row layui-col-space11">
+    <div class="layui-col-md2" >
+		<fieldset class="layui-elem-field">
+				 <legend class="layui-legend">机构列表</legend>
+				 <ul id="orgTree" class="ztree" ></ul>			
+		</fieldset>
     </div>
 
-    <div class="layui-col-md9">
-		<fieldset id="org_div" class="layui-elem-field">
-	         <legend>机构列表</legend>
-	         <div class="layui-field-box">
-	         	<div class="layui-col-md12 layui-col-space1">
-							<div class="layui-inline">
-								<a class="layui-btn layui-btn-normal addOrg_btn">添加</a>
-							</div>
-							<table id="orgList" lay-filter="orgList"></table>
-			    	</div>
-			    </div>
-		</fieldset>
-  </div>
+    <div class="layui-col-md10">
+			<fieldset id="org_div" class="layui-elem-field">
+				 <legend>机构列表</legend>
+				 <div class="layui-field-box">
+					<div class="layui-col-md12 layui-col-space1">
+						<div class="layui-inline">
+							<a class="layui-btn layui-btn-normal addOrg_btn">添加</a>
+						</div>
+						<table id="orgList" lay-filter="orgList"></table>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+</div>
 </div>
 
 <script type="text/html" id="orgListBar">
