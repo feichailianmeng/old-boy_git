@@ -1,6 +1,6 @@
 /**
  * @autor syp
- * @content echart 实例
+ * @content echarts 实例
  * @returns
  * @Time 2018-08-04
  */
