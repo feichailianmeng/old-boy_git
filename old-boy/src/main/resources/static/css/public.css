@@ -1,5 +1,5 @@
 /*公共样式*/
-/*.layui-legend {font-size: 16px;border-top: none;padding-top: 5px;font: "microsoft yahei"}*/
+/.layui-legend {font-size: 16px;border-top: none;padding-top: 5px;font: "microsoft yahei" !important}
 .childrenBody{ padding:10px;}
 .layui-table-view{ margin:0 !important;}
 .magb0{margin-bottom:0 !important;}
