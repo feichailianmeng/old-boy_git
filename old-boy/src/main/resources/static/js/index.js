@@ -1,3 +1,9 @@
+/**
+ * @autor syp
+ * @content index页面js
+ * @returns
+ * @Time 2018-08-03
+ */
 var $,tab,dataStr,layer;
 layui.config({
 	base : "../static/js/"

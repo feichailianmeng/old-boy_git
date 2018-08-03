@@ -1,3 +1,9 @@
+/**
+ * @autor syp
+ * @content 菜单列表页面js
+ * @returns
+ * @Time 2018-08-01
+ */
 layui.use(['element', 'layer', 'form', 'upload', 'treeGrid'], function () {
     var treeGrid = layui.treeGrid,
 	    $ = layui.jquery,

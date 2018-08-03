@@ -1,3 +1,9 @@
+/**
+ * @autor syp
+ * @content 角色列表页面js
+ * @returns
+ * @Time 2018-08-02
+ */
 layui.config({
 	base: '../../../../static/js/' //此处路径请自行处理, 可以使用绝对路径
 }).extend({

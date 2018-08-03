@@ -1,3 +1,9 @@
+/**
+ * @autor syp
+ * @content 机构列表页面js
+ * @returns
+ * @Time 2018-08-01
+ */
 layui.use(['element', 'layer', 'form', 'tree','table','laydate'], function () {
 	var layer = layui.layer
 	,_$ = layui.jquery,

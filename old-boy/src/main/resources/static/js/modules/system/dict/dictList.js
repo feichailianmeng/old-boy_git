@@ -1,3 +1,9 @@
+/**
+ * @autor syp
+ * @content 字典列表页面js
+ * @returns
+ * @Time 2018-08-02
+ */
 layui.use(['form','layer','laydate','table','laytpl'],function(){
     var form = layui.form,
         layer = parent.layer === undefined ? layui.layer : top.layer,

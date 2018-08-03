@@ -1,3 +1,9 @@
+/**
+ * @autor syp
+ * @content 登录页面js
+ * @returns
+ * @Time 2018-08-03
+ */
 layui.use(['form','layer','jquery'],function(){
     var form = layui.form,
         layer = parent.layer === undefined ? layui.layer : top.layer

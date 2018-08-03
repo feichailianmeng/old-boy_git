@@ -1,3 +1,9 @@
+/**
+ * @autor syp
+ * @content 用户列表页面js
+ * @returns
+ * @Time 2018-08-03
+ */
 $(function(){ 
 layui.use(['table','form','element','layer','jquery'],function(){
 	var layer = layui.layer,
