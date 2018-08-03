@@ -97,7 +97,21 @@ layui.use(['element', 'layer', 'form', 'tree','table','laydate'], function () {
 
 			}		
 			
-			
+			//搜索【此功能需要后台配合，所以暂时没有动态效果演示】
+			$(".search_btn").click(function(){
+				if($(".searchVal").val() != ''){
+					table.reload("dictListTable",{
+						page: {
+							curr: 1 //重新从第 1 页开始
+						},
+						where: {
+							key: $(".searchVal").val()  //搜索的关键字
+						}
+					})
+				}else{
+					layer.msg("请输入搜索的内容");
+				}
+			});			
 			//layui 自带树
 // 	  function initOrgTree(){
 // 		  $.ajax({

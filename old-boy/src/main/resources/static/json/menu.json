@@ -83,12 +83,6 @@
 	],		
 	"system": [
 		{
-			"title": "权限管理",
-			"icon": "icon-text",
-			"href": "page/permission/permissionMgr.html",
-			"spread": false
-		},
-		{
 			"title": "菜单管理",
 			"icon": "&#xe634;",
 			"href": "module/system/menu/menuList.html",

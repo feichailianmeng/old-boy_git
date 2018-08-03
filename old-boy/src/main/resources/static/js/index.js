@@ -22,24 +22,24 @@ layui.use(['bodyTab','form','element','layer','jquery'],function(){
                url: "../static/json/topMenu.json",
                success: function(data){
                //初始化顶部菜单
-							 for(var i=0;i<data.length;i++){
-								var cur = data[i];
+				 for(var i=0;i<data.length;i++){
+					var cur = data[i];
 
-								var tittle = "";
-								if(i == 0){
-									tittle = '<li class="layui-nav-item layui-this" data-menu="'+cur.id+'" id = "'+cur.id+'">'
-									tittle += '<a href="javascript:;"><i class="layui-icon" data-icon="&#xe63c;">&#xe63c;</i>';
-									tittle += '<cite>'+cur.name+'</cite></a></li>'
-									after = cur.id;
-									$("#topLevelMenus").append(tittle);
-									
-								}else{
-									tittle = '<li class="layui-nav-item" data-menu="'+cur.id+'">'
-									tittle += '<a href="javascript:;"><i class="layui-icon" data-icon="&#xe63c;">&#xe63c;</i>';
-									tittle += '<cite>'+cur.name+'</cite></a></li>'
-									$("#topLevelMenus").append(tittle);
-								}
-								element.init();
+					var tittle = "";
+					if(i == 0){
+						tittle = '<li class="layui-nav-item layui-this" data-menu="'+cur.id+'" id = "'+cur.id+'">'
+						tittle += '<a href="javascript:;"><i class="layui-icon" data-icon="&#xe63c;">&#xe63c;</i>';
+						tittle += '<cite>'+cur.name+'</cite></a></li>'
+						after = cur.id;
+						$("#topLevelMenus").append(tittle);
+						
+					}else{
+						tittle = '<li class="layui-nav-item" data-menu="'+cur.id+'">'
+						tittle += '<a href="javascript:;"><i class="layui-icon" data-icon="&#xe63c;">&#xe63c;</i>';
+						tittle += '<cite>'+cur.name+'</cite></a></li>'
+						$("#topLevelMenus").append(tittle);
+					}
+					element.init();
 				   }
 			   }
             });
@@ -202,13 +202,3 @@ function addTab(_this){
 	tab.tabAdd(_this);
 }
 
-//图片管理弹窗
-function showImg(){
-    $.getJSON('json/images.json', function(json){
-        var res = json;
-        layer.photos({
-            photos: res,
-            anim: 5
-        });
-    });
-}
