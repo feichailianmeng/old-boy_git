@@ -68,9 +68,6 @@ layui.use(['element', 'layer', 'form', 'upload', 'treeGrid'], function () {
             layui.layer.full(index);
         })
     }
-/*    $(".addMenu_btn").click(function(){
-    	addMenu(false);
-    }) */
 	
     //列表操作
     treeGrid.on('tool(menuTree)', function(obj){
@@ -89,8 +86,6 @@ layui.use(['element', 'layer', 'form', 'upload', 'treeGrid'], function () {
                     layer.close(index);
                 // })
             });
-        } else if(layEvent === 'look'){ //预览
-            layer.alert("此功能需要前台展示，实际开发中传入对应的必要参数进行编码内容页面访问")
         }
     });	
 });

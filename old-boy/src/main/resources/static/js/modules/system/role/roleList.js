@@ -82,6 +82,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             layui.layer.full(index);
         })
     }
+    //新增按钮
     $(".addRole_btn").click(function(){
     	addRole();
     })
@@ -105,24 +106,23 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                 // })
             });
         } else if(layEvent === 'permission'){ //配置权限			
-								var index = layui.layer.open({
-										type: 2,
-										title: '菜单选择',
-										shadeClose: true,
-										shade: 0.8,
-										area: ['280px', '65%'],
-										// content: '../views/module/system/role/menuselect.html',
-										content: 'menuselect.html',
-										success : function(layero, index){
-											//
-											setTimeout(function(){
-													layui.layer.tips('点击此处返回角色列表', '.layui-layer-setwin .layui-layer-close', {
-															tips: 3
-													});
-											},500)											
-										}
-
-									});		
+			var index = layui.layer.open({
+					type: 2,
+					title: '菜单选择',
+					shadeClose: true,
+					shade: 0.8,
+					area: ['280px', '65%'],
+					// content: '../views/module/system/role/menuselect.html',
+					content: 'menuselect.html',
+					success : function(layero, index){
+						//
+						setTimeout(function(){
+								layui.layer.tips('点击此处返回角色列表', '.layui-layer-setwin .layui-layer-close', {
+										tips: 3
+								});
+						},500)											
+					}
+			});		
         }
     });
 

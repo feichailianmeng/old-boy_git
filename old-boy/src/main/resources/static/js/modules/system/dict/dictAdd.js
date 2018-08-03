@@ -27,17 +27,4 @@ layui.use(['form','layer'],function(){
         },2000);
         return false;
     })
-
-    //格式化时间
-    function filterTime(val){
-        if(val < 10){
-            return "0" + val;
-        }else{
-            return val;
-        }
-    }
-    //定时发布
-    var time = new Date();
-    var submitTime = time.getFullYear()+'-'+filterTime(time.getMonth()+1)+'-'+filterTime(time.getDate())+' '+filterTime(time.getHours())+':'+filterTime(time.getMinutes())+':'+filterTime(time.getSeconds());
-
 })

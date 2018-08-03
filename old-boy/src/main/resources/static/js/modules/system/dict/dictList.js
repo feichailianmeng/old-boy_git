@@ -84,27 +84,6 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     	addDict();
     })
 
-    //批量删除
-    $(".delAll_btn").click(function(){
-        var checkStatus = table.checkStatus('newsListTable'),
-            data = checkStatus.data,
-            newsId = [];
-        if(data.length > 0) {
-            for (var i in data) {
-                newsId.push(data[i].newsId);
-            }
-            layer.confirm('确定删除选中的编码？', {icon: 3, title: '提示信息'}, function (index) {
-                // $.get("删除编码接口",{
-                //     newsId : newsId  //将需要删除的newsId作为参数传入
-                // },function(data){
-                tableIns.reload();
-                layer.close(index);
-                // })
-            })
-        }else{
-            layer.msg("请选择需要删除的编码");
-        }
-    })
 
     //列表操作
     table.on('tool(dictList)', function(obj){
@@ -122,8 +101,6 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                     layer.close(index);
                 // })
             });
-        } else if(layEvent === 'look'){ //预览
-            layer.alert("此功能需要前台展示，实际开发中传入对应的必要参数进行编码内容页面访问")
         }
     });
 

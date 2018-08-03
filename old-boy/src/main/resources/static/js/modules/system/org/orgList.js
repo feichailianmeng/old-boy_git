@@ -1,157 +1,117 @@
 layui.use(['element', 'layer', 'form', 'tree','table','laydate'], function () {
-	  var layer = layui.layer
-	  ,_$ = layui.jquery,
-		form = layui.form,
-	  laydate = layui.laydate,
-	  laytpl = layui.laytpl,
-	  table = layui.table;
-	  //节点标记
-	  var flag = '';
-	  var mycars;
-		//节点标记
-		var treeObj;
-		//ztree设置
-		var setting = {
-			view: {
-				selectedMulti: false
-			},
-			data: {
-				simpleData: {
-					enable: true
-				}
-			},
-			callback: {
-				onClick: onClick
-				
+	var layer = layui.layer
+	,_$ = layui.jquery,
+	form = layui.form,
+    laydate = layui.laydate,
+    laytpl = layui.laytpl,
+    table = layui.table;
+	//节点标记
+	var flag = '';
+	//节点标记
+	var treeObj;
+	//ztree设置
+	var setting = {
+		view: {
+			selectedMulti: false
+		},
+		data: {
+			simpleData: {
+				enable: true
 			}
-		};
-		//初始化树
-		initTree();
-		function initTree() {
-			$.ajax({
-				url: "../../../../static/json/orgTree_sim.json", //ajax请求地址
-				success: function (data) {
-					treeObj = $.fn.zTree.init($("#orgTree"), setting, covert(data)); //加载数据
-					//初始化
-					var node = treeObj.getNodeByParam('id', 1);//获取id为1的点
-					treeObj.selectNode(node);//选择点
-					treeObj.setting.callback.onClick(null, treeObj.setting.treeId, node);//调用事件	
-				}
-			});		
-			// $.fn.zTree.init($("#treeDemo"), setting);
-		}	
-		
-			function covert(data) {
-				var nodes = [];
-				for (var i = 0; i < data.length; i++) {
-					if(data[i].open == true){
-						nodes.push({
-							id: data[i].id,
-							pId: data[i].parentId,
-							name: data[i].name,
-							open: data[i].open
-						});
-					}else{
-						nodes.push({
-							id: data[i].id,
-							pId: data[i].parentId,
-							name: data[i].name
-						});
-					}
-
-				}
-				return nodes;
-			}
-			//加载右侧数据
-			function onClick(event, treeId, treeNode, clickFlag) {
-				// console.log(treeNode.id);
-				//生产坏境下请求后台
-				$.ajax({
-					url: "../../../../static/json/orgTree_sim.json", //ajax请求地址
-					success: function (data) {
-						//加载数据
-						var tabData =[];
-						flag = treeNode.id;
-						for(var i =0;i<data.length;i++){						
-							if(data[i].parentId == treeNode.id){
-									tabData.push(data[i]);
-							}
-						}
-						tableIns = table.render({
-							elem: '#orgList',
-							//生产坏境下请求后台
-							data : tabData,
-							cellMinWidth : 95,
-							page : true,
-							height : "full-125",
-							id : "orgListTable",
-							cols : [[
-								{field: 'id', title: 'ID', align:"center"},
-								{field: 'parentId', title: '父级ID'},
-								{field: 'name', title: '机构名称'},
-								{title: '操作', width:170, templet:'#orgListBar',fixed:"right",align:"center"}
-							]]
-						});	
-					}
-				});
-
-			}		
+		},
+		callback: {
+			onClick: onClick
 			
-			//搜索【此功能需要后台配合，所以暂时没有动态效果演示】
-			$(".search_btn").click(function(){
-				if($(".searchVal").val() != ''){
-					table.reload("dictListTable",{
-						page: {
-							curr: 1 //重新从第 1 页开始
-						},
-						where: {
-							key: $(".searchVal").val()  //搜索的关键字
-						}
-					})
-				}else{
-					layer.msg("请输入搜索的内容");
+		}
+	};
+	//初始化树
+	initTree();
+	function initTree() {
+		$.ajax({
+			url: "../../../../static/json/orgTree_sim.json", //ajax请求地址
+			success: function (data) {
+				treeObj = $.fn.zTree.init($("#orgTree"), setting, covert(data)); //加载数据
+				//初始化
+				var node = treeObj.getNodeByParam('id', 1);//获取id为1的点
+				treeObj.selectNode(node);//选择点
+				treeObj.setting.callback.onClick(null, treeObj.setting.treeId, node);//调用事件	
+			}
+		});		
+		// $.fn.zTree.init($("#treeDemo"), setting);
+	}	
+		
+	function covert(data) {
+		var nodes = [];
+		for (var i = 0; i < data.length; i++) {
+			if(data[i].open == true){
+				nodes.push({
+					id: data[i].id,
+					pId: data[i].parentId,
+					name: data[i].name,
+					open: data[i].open
+				});
+			}else{
+				nodes.push({
+					id: data[i].id,
+					pId: data[i].parentId,
+					name: data[i].name
+				});
+			}
+
+		}
+		return nodes;
+	}
+	//加载右侧数据
+	function onClick(event, treeId, treeNode, clickFlag) {
+		// console.log(treeNode.id);
+		//生产坏境下请求后台
+		$.ajax({
+			url: "../../../../static/json/orgTree_sim.json", //ajax请求地址
+			success: function (data) {
+				//加载数据
+				var tabData =[];
+				flag = treeNode.id;
+				for(var i =0;i<data.length;i++){						
+					if(data[i].parentId == treeNode.id){
+							tabData.push(data[i]);
+					}
 				}
-			});			
-			//layui 自带树
-// 	  function initOrgTree(){
-// 		  $.ajax({
-// 			   url: "../../../../static/json/orgTree.json",
-// 			   success: function(res){
-// 				mycars = res;				
-// 				layui.tree({
-// 					elem: '#orgTree' //指定元素
-// 					,target: '_blank'
-// 					,spread: true
-// 					,click: function(item){ //点击节点回调
-// 						// layer.msg('当前节名称：'+ item.name + '<br>全部参数：'+ JSON.stringify(item.children));
-// 						//机构列表
-// 						flag = item.id;
-// 						var tableIns = table.render({
-// 							elem: '#orgList',
-// 							data : item.children,
-// 							cellMinWidth : 95,
-// 							page : true,
-// 							height : "full-125",
-// 							limit : 20,
-// 							limits : [10,15,20,25],
-// 							id : "orgListTable",
-// 							cols : [[
-// 								{field: 'id', title: 'ID', align:"center"},
-// 								{field: 'parentId', title: '父级ID'},
-// 								{field: 'name', title: '机构名称'},
-// 								{title: '操作', width:170, templet:'#orgListBar',fixed:"right",align:"center"}
-// 							]]
-// 						});	
-// 					}
-// 					,nodes: mycars
-// 				});
-// 			   },
-// 			   error: function() { 
-// 					alert("数据异常,请检查是否json格式"); 
-// 				} 
-// 			});		  
-// 	  }
-	  // initOrgTree();
+				tableIns = table.render({
+					elem: '#orgList',
+					//生产坏境下请求后台
+					data : tabData,
+					cellMinWidth : 95,
+					page : true,
+					height : "full-125",
+					id : "orgListTable",
+					cols : [[
+						{field: 'id', title: 'ID', align:"center"},
+						{field: 'parentId', title: '父级ID'},
+						{field: 'name', title: '机构名称'},
+						{title: '操作', width:170, templet:'#orgListBar',fixed:"right",align:"center"}
+					]]
+				});	
+			}
+		});
+
+	}		
+			
+	//搜索【此功能需要后台配合，所以暂时没有动态效果演示】
+	$(".search_btn").click(function(){
+		if($(".searchVal").val() != ''){
+			table.reload("dictListTable",{
+				page: {
+					curr: 1 //重新从第 1 页开始
+				},
+				where: {
+					key: $(".searchVal").val()  //搜索的关键字
+				}
+			})
+		}else{
+			layer.msg("请输入搜索的内容");
+		}
+	});			
+
 
     //添加编码
     function addOrg(edit){
