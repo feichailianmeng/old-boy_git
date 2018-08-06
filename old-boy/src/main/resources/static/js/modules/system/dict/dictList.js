@@ -11,24 +11,23 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
         laydate = layui.laydate,
         laytpl = layui.laytpl,
         table = layui.table;
-
+    	
     //编码列表
     var tableIns = table.render({
         elem: '#dictList',
-        url : '../../../../static/json/dictlist.json',
+        url : 'http://127.0.0.1:8080/sys/sysdict/list',
         cellMinWidth : 95,
         page : true,
         height : "full-125",
-        limit : 20,
-        limits : [10,15,20,25],
+        limit : 10,
         id : "dictListTable",
         cols : [[
-            {field: 'id', title: 'ID', align:"center"},
-            {field: 'dictName', title: '字典名称'},
-            {field: 'dictType', title: '字典类型'},
-            {field: 'isSys', title: '系统字典', align:'center'},
-            {field: 'updateDate', title: '更新时间',  align:'center'},
-            {field: 'status', title: '状态', align:'center'},
+/*            {field: 'id', title: 'ID', align:"center",style:'display:none;'},*/
+            {field: 'typeCode', title: 'typeCode'},
+            {field: 'label', title: 'label'},
+            {field: 'value', title: 'value', align:'center'},
+            {field: 'remark', title: 'remark',  align:'center'},
+            {field: 'flag', title: 'flag', align:'center'},
             {title: '操作', width:170, templet:'#dictListBar',fixed:"right",align:"center"}
         ]]
     });
@@ -42,7 +41,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                     curr: 1 //重新从第 1 页开始
                 },
                 where: {
-                    key: $(".searchVal").val()  //搜索的关键字
+                	typeCode: $(".searchVal").val()  //搜索的关键字
                 }
             })
         }else{
@@ -59,14 +58,13 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
-                	body.find(".dictName").val(edit.dictName);
-                	body.find(".dictType").val(edit.dictType);
-                	
+                	body.find(".remark").val(edit.remark);
+                	body.find(".value").val(edit.value);
+                	body.find(".typeCode").val(edit.typeCode);
+                	body.find(".label").val(edit.label);
+                	body.find(".value").val(edit.value);
+                	body.find(".sort").val(edit.sort);            	
                 	//可参考如下
-//                    body.find(".newsName").val(edit.newsName);
-//                    body.find(".abstract").val(edit.abstract);
-//                    body.find(".thumbImg").attr("src",edit.newsImg);
-//                    body.find("#news_content").val(edit.content);
 //                    body.find(".newsStatus select").val(edit.newsStatus);
 //                    body.find(".openness input[name='openness'][title='"+edit.newsLook+"']").prop("checked","checked");
 //                    body.find(".newsTop input[name='newsTop']").prop("checked",edit.newsTop);
@@ -79,7 +77,6 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                 },500)
             }
         })
-		console.log(index);
         layui.layer.full(index);
         //改变窗口大小时，重置弹窗的宽高，防止超出可视区域（如F12调出debug的操作）
         $(window).on("resize",function(){
@@ -100,12 +97,14 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
         	addDict(data);
         } else if(layEvent === 'del'){ //删除
             layer.confirm('确定删除此此编码？',{icon:3, title:'提示信息'},function(index){
-                // $.get("删除编码接口",{
-                //     newsId : data.newsId  //将需要删除的newsId作为参数传入
-                // },function(data){
-                    tableIns.reload();
-                    layer.close(index);
-                // })
+                 $.get("http://127.0.0.1:8080/sys/sysdict/delete",{
+                     id : data.id  
+                 },function(data){
+                	if(data = "success"){
+                        tableIns.reload();
+                        layer.close(index);	
+                	}
+                 })
             });
         }
     });

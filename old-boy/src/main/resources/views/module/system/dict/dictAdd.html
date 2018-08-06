@@ -13,30 +13,35 @@
 	<link rel="stylesheet" href="../../../../static/css/public.css" media="all" />
 </head>
 <body class="childrenBody">
-<form class="layui-form" style="width:80%;">
+<form class="layui-form " id= "dictForm" style="width:80%;">
 	<div class="layui-form-item layui-row layui-col-xs12">
-		<label class="layui-form-label">字典名称</label>
+		<label class="layui-form-label">typeCode</label>
 		<div class="layui-input-block">
-			<input type="text" class="layui-input dictName"  placeholder="请输入字典名称">
+			<input type="text" class="layui-input typeCode"  placeholder="请输入字典typeCode">
 		</div>
 	</div>
 	<div class="layui-form-item layui-row layui-col-xs12">
-		<label class="layui-form-label">字典类型</label>
+		<label class="layui-form-label">value</label>
 		<div class="layui-input-block">
-			<input type="text" class="layui-input dictType"  placeholder="请输入字典类型" id = "dictType">
+			<input type="text" class="layui-input value"  placeholder="请输入字典value" >
 		</div>
 	</div>
-<!-- 	<div class="layui-form-item layui-row layui-col-xs12">
-		<label class="layui-form-label">是否系统</label>
-			<select>
-				<option value="0">是</option>
-				<option value="1">否</option>
-			</select>
-	</div> -->
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<label class="layui-form-label">label</label>
+		<div class="layui-input-block">
+			<input type="text" class="layui-input label"  placeholder="请输入字典label">
+		</div>
+	</div>
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<label class="layui-form-label">排序</label>
+		<div class="layui-input-block">
+			<input type="text" class="layui-input sort"  placeholder="请输入字典排序" >
+		</div>
+	</div>
 	<div class="layui-form-item layui-row layui-col-xs12">
 		<label class="layui-form-label">备注信息</label>
 		<div class="layui-input-block">
-			<textarea placeholder="请输入备注信息" class="layui-textarea"></textarea>
+			<textarea placeholder="请输入备注信息" class="layui-textarea remark"></textarea>
 		</div>
 	</div>
 	<div class="layui-form-item layui-row layui-col-xs12">

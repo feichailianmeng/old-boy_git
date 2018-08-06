@@ -3,7 +3,7 @@
 	"code": 0,
 	"msg": "",
 	"count": 15,
-	"data": [
+	"list": [
         {
             "id": "dept",
             "updateDate": "2018-04-02 09:16",
