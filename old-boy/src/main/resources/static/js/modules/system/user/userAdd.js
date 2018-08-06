@@ -28,8 +28,9 @@ layui.use(['jquery','form','layer','formSelects'],function(){
 		$.ajax({
 			url: "../../../../static/json/rolelist.json", //ajax请求地址
 			success: function (rs) {
+				console.log(rs);
 				formSelects.data('userRole', 'local', {
-						arr: rs.data					
+						arr: rs.list					
 				})
 			}
 		});

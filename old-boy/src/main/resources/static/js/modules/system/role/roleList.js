@@ -4,10 +4,16 @@
  * @returns
  * @Time 2018-08-02
  */
-layui.use(['form','layer','laydate','table','laytpl'],function(){
+ layui.config({
+	base : "../../../../static/js/"
+}).extend({
+	"application" : "application"
+})
+layui.use(['application','form','layer','laydate','table','laytpl'],function(){
     var form = layui.form,
         layer = parent.layer === undefined ? layui.layer : top.layer,
         $ = layui.jquery,
+				application = layui.application,
         laydate = layui.laydate,
         laytpl = layui.laytpl,
         table = layui.table;

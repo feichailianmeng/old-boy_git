@@ -10,8 +10,9 @@ layui.config({
 }).extend({
 	"bodyTab" : "bodyTab"
 })
-layui.use(['bodyTab','form','element','layer','jquery'],function(){
+layui.use(['bodyTab','form','element','layer','jquery','application'],function(){
 	var form = layui.form,
+	application = layui.application,
 	element = layui.element;
 	$ = layui.$;
 	layer = parent.layer === undefined ? layui.layer : top.layer;
