@@ -1,7 +1,7 @@
 layui.use('form', function(){
     var form = layui.form
 	
-    //自定义验证规则
+    //自定义验证规则  每个form初始化都得调用
     form.verify({
 		//名字
     	Name: [/^(?!_)(?!.*?_$)[_a-zA-Z0-9_\u4e00-\u9fa5]{2,20}$/, '请输入正确格式！'],
