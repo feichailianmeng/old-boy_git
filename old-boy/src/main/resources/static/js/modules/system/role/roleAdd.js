@@ -4,11 +4,18 @@
  * @returns
  * @Time 2018-08-02
  */
-layui.use(['form','layer'],function(){
-    var form = layui.form
+ layui.config({
+	base : "../../../../static/js/"
+}).extend({
+	"validparam"  : "validparam"
+}) 
+layui.use(['form','layer','validparam'],function(){
+    var form = layui.form,
+	validparam = layui.validparam,
         layer = parent.layer === undefined ? layui.layer : top.layer,
         $ = layui.jquery;
 
+	form.verify(validparam);
     form.on("submit(addRole)",function(data){
         //弹出loading
         var index = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});

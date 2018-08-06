@@ -9,7 +9,7 @@
 }).extend({
 	"application" : "application"
 })
-layui.use(['application','form','layer','laydate','table','laytpl'],function(){
+layui.use(['application','form','layer','laydate','table','laytpl',"validparam"],function(){
     var form = layui.form,
         layer = parent.layer === undefined ? layui.layer : top.layer,
         $ = layui.jquery,
