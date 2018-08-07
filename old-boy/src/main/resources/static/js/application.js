@@ -8,7 +8,8 @@ layui.define(function(exports){
 	var obj ={
 		//服务的IP及端口
 		SERVE_PORT: "8080",
-		SERVE_IP: "127.0.0.1"
+		SERVE_IP: "127.0.0.1",
+		SERVE_URL: "http://127.0.0.1:8080"
 	}
     exports('application', obj);
 })

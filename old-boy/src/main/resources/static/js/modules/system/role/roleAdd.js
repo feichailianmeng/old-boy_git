@@ -4,11 +4,6 @@
  * @returns
  * @Time 2018-08-02
  */
- layui.config({
-	base : "../../../../static/js/"
-}).extend({
-	"validparam"  : "validparam"
-}) 
 layui.use(['form','layer','validparam'],function(){
     var form = layui.form,
 	validparam = layui.validparam,
