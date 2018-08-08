@@ -21,7 +21,7 @@ layui.use(['form','layer','laydate','table','laytpl','application'],function(){
     //编码列表
     var tableIns = table.render({
         elem: '#dictList',
-        url : application.SERVE_URL+'/sys/sysdict/list',
+        url : 'http://127.0.0.1:8080/sys/sysdict/list',
         cellMinWidth : 95,
         page : true,
         height : "full-125",
@@ -61,15 +61,30 @@ layui.use(['form','layer','laydate','table','laytpl','application'],function(){
             title : "添加编码",
             type : 2,
             content : "dictAdd.html",
-            success : function(layero, index){
+            success : function(layero, index){				
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
-                	body.find(".remark").val(edit.remark);
-                	body.find(".value").val(edit.value);
-                	body.find(".typeCode").val(edit.typeCode);
-                	body.find(".label").val(edit.label);
-                	body.find(".value").val(edit.value);
-                	body.find(".sort").val(edit.sort);            	
+					$.ajax({
+						url: 'http://127.0.0.1:8080/sys/sysdict/get', //ajax请求地址
+						type: "GET",
+						data:{
+							id :edit.id,
+						},						
+						success: function (data) {
+							if(data){
+								body.find(".remark").val(data.remark);
+								body.find(".value").val(data.value);
+								body.find(".typeCode").val(data.typeCode);
+								body.find(".label").val(data.label);
+								body.find(".value").val(data.value);
+								body.find(".sort").val(data.sort);  	
+							}else{
+								//console.data();
+								top.layer.msg("编码获取失败！");
+							}
+						}
+					}); 
+          	
                 	//可参考如下
 //                    body.find(".newsStatus select").val(edit.newsStatus);
 //                    body.find(".openness input[name='openness'][title='"+edit.newsLook+"']").prop("checked","checked");
